@@ -1,0 +1,212 @@
+// VARIABLES
+$padding-box: 0.6rem 1.5rem; // for boxes/cards
+$padding-ipt: 0.4rem 0.6rem; // for input elements
+$clr-purple: #4747d1;
+$clr-purple-light: #7070db;
+$clr-blue-light: #039ce2;
+$clr-blue: #0379b0;
+$rad: 3px; // border radius
+
+
+html {
+  font: 400 15px/1.5 'Montserrat', sans-serif;
+}
+
+*, 
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+input, 
+select, 
+button {
+  outline: none;
+  font-size: 1rem;
+}
+
+button,
+input[type='submit'] {
+  cursor: pointer;
+}
+
+a {text-decoration: none;}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// menu
+.menu-div {
+  position: sticky;
+  top: 0;
+  padding: 1.4rem;
+  background: #fff;
+  z-index: 100;
+}
+
+#menu {
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  position: relative;
+  
+  &::after {
+    content: 'CONVERTERS';
+    font-size: 1rem;
+    padding-left: 7px;
+    
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+  }
+}
+
+.converter-type {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 0;
+  overflow: hidden;
+  
+  background: #ddd;
+  padding: 3rem 0;
+  box-shadow: 10px 0 24px rgba(#000, 0.3);
+  transition: 0.25s ease-in-out;
+  
+  &.show {
+    width: max-content;
+    overflow: visible;
+  }
+}
+
+.converter-type .converter {
+  padding: 1rem 3rem 1rem 2rem;
+  font-size: 13px;
+  text-transform: uppercase;
+  
+  &.selected {
+    background: $clr-purple-light;
+    color: rgba(#fff, 0.8);
+  }
+  
+  &:hover {
+    background: rgba(#000, 0.1);
+    color: #000;
+    cursor: pointer;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 0 6rem 0;
+  
+  h1 {
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+}
+
+// input area
+.input {
+  .input-type, 
+  .input-value {
+    padding: $padding-ipt;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    border: solid #ccc;
+  }
+  
+  .input-type {
+    border-width: 1px;
+    color: #555;
+  }
+  
+  .input-value {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 1rem;
+    border-width: 0 0 1px 0;
+  }
+  
+  .input-value:focus {
+    border-width: 0 0 2px 0;
+    border-color: #00f;
+  }
+  
+  @media screen and (min-width: 550px) {
+    border: 1px solid #808080;
+    padding: $padding-ipt;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: stretch;
+    border-radius: $rad;
+
+    &.focus {border: 2px solid #00f;}
+    .input-type {border-width: 0 1px 0 0;}
+    
+    .input-value {
+      padding: $padding-ipt;
+      margin-top: 0;
+      border: none;
+    }
+  }
+}
+
+// output area
+.converted {
+  margin-top: 1.2rem;
+  display: none;
+}
+
+// output box
+.output {
+  padding: $padding-box;
+  margin-bottom: 0.4rem;
+  border-radius: $rad;
+  color: #fff;
+  background: $clr-blue-light; 
+  
+  .label {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin: 0.7rem 0;
+    opacity: 0.7;
+  }
+  
+  .output-value {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  &:nth-child(4n+1) {background: $clr-purple-light;}
+  &:nth-child(4n+2) {background: $clr-purple;}
+  &:nth-child(4n+3) {background: $clr-blue;}
+}
+
+footer {
+  padding: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  
+  a {
+    color: #999;
+    font-weight: 500;
+  }
+}
